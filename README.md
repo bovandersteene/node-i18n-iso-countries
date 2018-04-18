@@ -178,6 +178,22 @@ console.log(countries.isValid("US"), countries.isValid("USA"), countries.isValid
 // true, true, false
 ``````
 
+### Convert Alpha-2 to Continent code
+
+`````javascript
+var countries = require("i18n-iso-countries");
+console.log(countries.alpha2ToContinent("US"));
+// NA
+`````
+
+### Convert Alpha-2 to Continent code
+
+`````javascript
+var countries = require("i18n-iso-countries");
+console.log(countries.alpha3ToContinent("USA"));
+// NA
+`````
+
 ## Contribution
 
 To add a language:

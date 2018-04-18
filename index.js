@@ -9,7 +9,8 @@ var registeredLocales = {};
 var alpha2 = {},
   alpha3 = {},
   numeric = {},
-  invertedNumeric = {};
+  invertedNumeric = {},
+  continent = {};
 
 codes.forEach(function(codeInformation) {
   var s = codeInformation;
@@ -17,6 +18,7 @@ codes.forEach(function(codeInformation) {
   alpha3[s[1]] = s[0];
   numeric[s[2]] = s[0];
   invertedNumeric[s[0]] = s[2];
+  continent[s[0]] = s[4];
 });
 
 function formatNumericCode(code) {
@@ -235,3 +237,21 @@ exports.langs = function() {
 exports.isValid = function(code) {
   return this.toAlpha3(code) !== undefined;
 };
+
+/*
+ * @param code Alpha-2 code
+ * @return Continent code or undefined
+ */
+function alpha2ToContinent(code) {
+    return continent[code];
+}
+exports.alpha2ToContinent = alpha2ToContinent;
+
+/*
+ * @param code Alpha-3 code
+ * @return Continent code or undefined
+ */
+function alpha3ToContinent(code) {
+    return continent[alpha3[code]];
+}
+exports.alpha3ToContinent = alpha3ToContinent;
